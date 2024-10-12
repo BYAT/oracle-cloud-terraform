@@ -1,7 +1,7 @@
 # v2.11.0:
 ## **New**
 
-* Update object storage module to support bucket replication. There is only one policy can be added to the oci bucket
+* `object-storage` Support bucket replication policy. There is only one policy can be added to the oci bucket
 
 ```h
 resource "oci_objectstorage_replication_policy" "bucket_replication" {
@@ -16,6 +16,9 @@ resource "oci_objectstorage_replication_policy" "bucket_replication" {
 }
 
 ```
+
+* `network`: Add Remote Peering Connections (RPC) in network module that support multiple PRCs
+
 ## **Fix**
 None
 

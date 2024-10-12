@@ -214,3 +214,22 @@ variable "local_peering_gateway" {
       default public and private route tables. Leave empty if you intend to configure them manually.
   EOF
 }
+variable "remote_peering_connection" {
+  type = map(object({
+    compartment_id   = string
+    drg_id           = string
+    defined_tags     = optional(map(string))
+    peer_id          = optional(string)
+    peer_region_name = optional(string)
+
+  }))
+  default = {}
+  description = <<EOF
+    list of object to configure Remote Peering Connection
+      name              : The name of the remote peering connection
+      drg_id            : The OCID of the DRG the RPC belongs to
+      defined_tags      : Defined tags for this resource
+      peer_id           : The OCID of the RPC to be peer with
+      peer_region_name  : The name of the region that contains the remote peering connection to be peer with 
+  EOF
+}
