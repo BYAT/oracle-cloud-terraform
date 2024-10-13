@@ -205,3 +205,13 @@ resource "oci_core_route_table_attachment" "private_route_table_attachment" {
   subnet_id      = oci_core_subnet.private_subnet[each.key].id
   route_table_id = lookup(each.value.optionals, "route_table_id", oci_core_route_table.private_route_table[local.private_route_table_key].id)
 }
+
+resource "oci_core_remote_peering_connection" "remote_peering_connection" {
+  for_each         = { for k, v in var.remote_peering_connection : k => v if v != null }
+  display_name     = each.key
+  compartment_id   = lookup(each.value.compartment_id, "compartment_id", var.compartment_id)
+  drg_id           = each.value.drg_id
+  defined_tags     = each.value.defined_tags
+  peer_id          = each.value.peer_id
+  peer_region_name = each.value.peer_region_name
+}

@@ -16,6 +16,8 @@ resource "oci_objectstorage_replication_policy" "bucket_replication" {
 }
 
 ```
+
+* `network`: Add Remote Peering Connections (RPC) in network module that support multiple PRCs
 ## **Fix**
 None
 
